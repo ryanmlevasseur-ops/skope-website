@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKOPE — We Got Your Vision</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --void: #080a07;
+    --phosphor: #39ff14;
+    --lime: #c8f542;
+    --offwhite: #f0f0f0;
+    --muted: #5a5a5a;
+    --border: rgba(57,255,20,0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--void);
+    color: var(--offwhite);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  nav {
+    position: relative;
+    z-index: 10;
+    padding: 22px 48px;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    color: var(--phosphor);
+    text-shadow: 0 0 12px rgba(57,255,20,0.5);
+    text-decoration: none;
+  }
+
+  /* ─── CONFIRM ─── */
+  .confirm {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Pulsing signal glow behind everything */
+  .confirm::after {
+    content: '';
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(57,255,20,0.08) 0%, transparent 60%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(0.9); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+  }
+
+  /* Signal-received check mark */
+  .signal {
+    width: 64px; height: 64px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s forwards;
+  }
+
+  .signal svg {
+    width: 100%; height: 100%;
+    color: var(--phosphor);
+    filter: drop-shadow(0 0 16px rgba(57,255,20,0.5));
+  }
+
+  .signal svg path {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: drawCheck 0.5s ease 0.5s forwards;
+  }
+
+  @keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .confirm-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--phosphor);
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+
+  .confirm-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 11vw, 140px);
+    letter-spacing: 0.01em;
+    line-height: 0.9;
+    color: var(--offwhite);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.4s forwards;
+  }
+
+  .confirm-headline em {
+    font-style: normal;
+    color: var(--phosphor);
+    text-shadow: 0 0 36px rgba(57,255,20,0.45);
+  }
+
+  .confirm-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--muted);
+    max-width: 540px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.55s forwards;
+  }
+
+  .confirm-body p { margin-bottom: 20px; }
+  .confirm-body p:last-child { margin-bottom: 0; }
+
+  .confirm-body strong {
+    color: var(--offwhite);
+    font-weight: 400;
+  }
+
+  .confirm-cta {
+    margin-top: 48px;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.7s forwards;
+  }
+
+  .btn-ghost {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--offwhite);
+    background: transparent;
+    border: 1px solid var(--muted);
+    padding: 14px 36px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--phosphor);
+    color: var(--phosphor);
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 0.2em;
+    color: var(--phosphor);
+    opacity: 0.7;
+  }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 720px) {
+    nav { padding: 18px 24px; }
+    .confirm { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 24px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .signal, .confirm-eyebrow, .confirm-headline, .confirm-body, .confirm-cta {
+      animation: none; opacity: 1;
+    }
+    .signal svg path { stroke-dashoffset: 0; }
+    .confirm::after { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SKOPE</a>
+</nav>
+
+<section class="confirm">
+  <div class="signal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6L9 17l-5-5"/>
+    </svg>
+  </div>
+
+  <span class="confirm-eyebrow">Signal Received</span>
+  <h1 class="confirm-headline">We got your <em>vision.</em></h1>
+  <div class="confirm-body">
+    <p>If the project feels like the right fit, we'll reach out to talk <strong>concept, budget, and next steps.</strong></p>
+    <p>In the meantime, keep building. The artists who win are the ones who treat every release like it matters.</p>
+  </div>
+  <div class="confirm-cta">
+    <a href="index.html" class="btn-ghost">← Back to site</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SKOPE</div>
+  <div class="footer-copy">© 2026 Skope Studio · poweredbyskope.com</div>
+</footer>
+
+</body>
+</html>
