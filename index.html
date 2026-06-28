@@ -508,6 +508,478 @@
     display: block;
   }
 
+  /* ─── MERCH ─── */
+  .merch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .merch-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+
+  .merch-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57,255,20,0.2);
+  }
+
+  .merch-img {
+    aspect-ratio: 1;
+    background: var(--deep-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .merch-img .dot-grid-sm {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(57,255,20,0.14) 1px, transparent 1px);
+    background-size: 12px 12px;
+    opacity: 0.6;
+  }
+
+  .merch-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(57,255,20,0.35);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.05em;
+  }
+
+  .merch-info {
+    padding: 18px 20px;
+  }
+
+  .merch-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--offwhite);
+    margin-bottom: 4px;
+  }
+
+  .merch-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--phosphor);
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section {
+    background: var(--void);
+    text-align: center;
+    padding: 160px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 100%, rgba(57,255,20,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-section .section-title {
+    font-size: clamp(52px, 9vw, 120px);
+    margin-bottom: 24px;
+  }
+
+  .contact-section p {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+
+  .contact-email {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    color: var(--phosphor);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid rgba(57,255,20,0.3);
+    padding-bottom: 3px;
+    transition: border-color 0.2s;
+    display: inline-block;
+    margin-bottom: 48px;
+  }
+
+  .contact-email:hover { border-color: var(--phosphor); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep-green);
+    border-top: 1px solid rgba(57,255,20,0.1);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.2em;
+    color: var(--phosphor);
+    opacity: 0.7;
+  }
+
+  .footer-copy {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer-socials a {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-socials a:hover { color: var(--phosphor); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { gap: 20px; }
+    section, .split, .contact-section { padding: 80px 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .split { grid-template-columns: 1fr; gap: 40px; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .merch-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .merch-grid { grid-template-columns: 1fr 1fr; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-logo, .reel-track, .dot-grid, .scroll-line { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SKOPE</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img class="hero-logo" src="logo.png" alt="SKOPE">  <p class="hero-tagline">Music Video Studio &nbsp;·&nbsp; Est. 2026</p>
+  <h1 class="hero-headline">We frame<br><em>the moment.</em></h1>
+  <p class="hero-sub">Skope creates music videos that become the visual identity of a song — not just content, but the image audiences carry forever.</p>
+  <div class="hero-cta">
+    <a href="start.html" class="btn-primary">Book a session</a>
+    <a href="#work" class="btn-ghost">View work</a>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- REEL STRIP -->
+<div class="reel-section" id="work">
+  <div class="reel-track">
+    <!-- 8 items × 2 for infinite loop -->
+    <div class="reel-item" style="background:#101a0a"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#3a5a2a">ARTIST SHOWCASE</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 001</span></div>
+    <div class="reel-item" style="background:#0a1505"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2a4a1a">LIVE SESSION</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 002</span></div>
+    <div class="reel-item" style="background:#0c1808"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#304520">CONCEPT FILM</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 003</span></div>
+    <div class="reel-item" style="background:#111f0b"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#3a5828">LYRIC VISUAL</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 004</span></div>
+    <div class="reel-item" style="background:#0d160a"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#344d22">PERFORMANCE</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 005</span></div>
+    <div class="reel-item" style="background:#0a1206"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2a3e18">MINI FILM</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 006</span></div>
+    <div class="reel-item" style="background:#0f1c0c"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#38521e">OUTDOOR SHOOT</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 007</span></div>
+    <div class="reel-item" style="background:#0b1508"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2e461a">STUDIO SESSION</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 008</span></div>
+    <!-- Loop duplicate -->
+    <div class="reel-item" style="background:#101a0a"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#3a5a2a">ARTIST SHOWCASE</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 001</span></div>
+    <div class="reel-item" style="background:#0a1505"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2a4a1a">LIVE SESSION</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 002</span></div>
+    <div class="reel-item" style="background:#0c1808"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#304520">CONCEPT FILM</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 003</span></div>
+    <div class="reel-item" style="background:#111f0b"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#3a5828">LYRIC VISUAL</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 004</span></div>
+    <div class="reel-item" style="background:#0d160a"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#344d22">PERFORMANCE</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 005</span></div>
+    <div class="reel-item" style="background:#0a1206"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2a3e18">MINI FILM</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 006</span></div>
+    <div class="reel-item" style="background:#0f1c0c"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#38521e">OUTDOOR SHOOT</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 007</span></div>
+    <div class="reel-item" style="background:#0b1508"><div class="reel-bg" style="font-size:13px;letter-spacing:0.15em;color:#2e461a">STUDIO SESSION</div><div class="reel-overlay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div><span class="reel-label">REEL 008</span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div>
+      <span class="stat-num">500</span>
+      <span class="stat-label">Videos produced</span>
+    </div>
+    <div>
+      <span class="stat-num">200</span>
+      <span class="stat-label">Artists signed</span>
+    </div>
+    <div>
+      <span class="stat-num">1M</span>
+      <span class="stat-label">Combined streams</span>
+    </div>
+    <div>
+      <span class="stat-num">1</span>
+      <span class="stat-label">Award noms</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <span class="section-label">What we do</span>
+  <h2 class="section-title">Full creative<br>production</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">— 01</span>
+      <div class="service-title">Music Videos</div>
+      <p class="service-desc">Concept-to-delivery music video production. We handle treatment writing, location scouting, crew, and post. You bring the track, we build the world around it.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">— 02</span>
+      <div class="service-title">Visual Identity</div>
+      <p class="service-desc">Press shots, EPK content, social cuts, and rollout assets that keep your visual language consistent across every platform and release.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-num">— 03</span>
+      <div class="service-title">Live Capture</div>
+      <p class="service-desc">Multi-camera live performance recording, whether you're in the studio, at a venue, or somewhere unexpected. We make it look as good as it sounds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT FEATURE: About -->
+<div class="split">
+  <div class="split-visual">
+    <img src="studio-1a.jpg" style="width:100%;height:100%;object-fit:cover;opacity:0.85;">
+    <span class="split-visual-label">Studio · Active</span>
+</div>
+  <div class="split-content">
+    <span class="section-label">Who we are</span>
+    <h2 class="section-title">Small team.<br><em style="color:var(--phosphor);font-style:normal">Big frame.</em></h2>
+    <p>Skope is a three-person music video studio built on the belief that the best visuals come from directors who actually listen to music. We don't pitch generic treatments — we respond to what the track needs.</p>
+    <p>Based in the studio but shooting anywhere a story takes us. Emerging artists welcome; budgets are a conversation, not a barrier.</p>
+    <a href="#contact" class="btn-primary">Let's talk</a>
+  </div>
+</div>
+
+<!-- MERCH -->
+<section id="merch">
+  <span class="section-label">Skope Store</span>
+  <h2 class="section-title">Wear the<br>signal</h2>
+  <div class="merch-grid">
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">TEE</span></div>
+      <div class="merch-info">
+        <div class="merch-name">LED Tee — Black / Green</div>
+        <div class="merch-price">8</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">CAP</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Skope 6-Panel Cap</div>
+        <div class="merch-price">4</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">HOOD</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Phosphor Hoodie</div>
+        <div class="merch-price">2</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">PACK</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Crew Sticker Pack</div>
+        <div class="merch-price">2</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <span class="section-label">Get in touch</span>
+  <h2 class="section-title" style="margin-bottom:20px">Book<br><em style="color:var(--phosphor);font-style:normal">your shot.</em></h2>
+  <p>Have a project in mind? A release coming up? Let's talk — we take on a limited number of projects per quarter so spots fill fast.</p>
+  <div>
+    <a href="mailto:poweredbyskope@gmail.com" class="contact-email">poweredbyskope@gmail.com</a>
+  </div>
+  <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;">
+    <a href="start.html" class="btn-primary">Book a session</a>
+    <a href="#services" class="btn-ghost">See services</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">SKOPE</div>
+  <div class="footer-copy">© 2026 Skope Studio. All rights reserved.</div>
+  <div class="footer-socials">
+    <a href="https://www.instagram.com/poweredbyskope/" target="_blank">Instagram</a>
+    <a href="https://www.youtube.com/@poweredbyskope">YouTube</a>
+    <a href="https://x.com/poweredbyskope">X</a>
+  </div>
+</footer>
+
+</body>
+</html>    background: var(--phosphor);
+    transition: height 0.3s;
+    box-shadow: 0 0 10px rgba(57,255,20,0.5);
+  }
+
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { border-color: rgba(57,255,20,0.2); }
+
+  .service-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--phosphor);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    color: var(--offwhite);
+    margin-bottom: 14px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ─── SPLIT FEATURE ─── */
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 120px 48px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .split-visual {
+    aspect-ratio: 4/3;
+    background: var(--panel);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(57,255,20,0.1);
+  }
+
+  /* Dot matrix grid — homage to the LED logo */
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(57,255,20,0.18) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    animation: gridPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes gridPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .split-visual-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--phosphor);
+    text-transform: uppercase;
+  }
+
+  .split-content .section-title {
+    margin-bottom: 20px;
+  }
+
+  .split-content p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: var(--deep-green);
+    border-top: 1px solid rgba(57,255,20,0.1);
+    border-bottom: 1px solid rgba(57,255,20,0.1);
+    padding: 60px 48px;
+  }
+
+  .stats-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: var(--phosphor);
+    text-shadow: 0 0 24px rgba(57,255,20,0.35);
+    display: block;
+  }
+
+  .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    display: block;
+  }
+
    /* ─── MERCH ─── */
   .merch-grid {
     display: grid;
