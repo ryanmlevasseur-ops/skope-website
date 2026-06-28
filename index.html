@@ -508,6 +508,71 @@
     display: block;
   }
 
+   /* ─── MERCH ─── */
+  .merch-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .merch-card {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.04);
+    overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s;
+    cursor: pointer;
+  }
+
+  .merch-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(57,255,20,0.2);
+  }
+
+  .merch-img {
+    aspect-ratio: 1;
+    background: var(--deep-green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .merch-img .dot-grid-sm {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(57,255,20,0.14) 1px, transparent 1px);
+    background-size: 12px 12px;
+    opacity: 0.6;
+  }
+
+  .merch-icon {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(57,255,20,0.35);
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.05em;
+  }
+
+  .merch-info {
+    padding: 18px 20px;
+  }
+
+  .merch-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--offwhite);
+    margin-bottom: 4px;
+  }
+
+  .merch-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--phosphor);
+  }
+
   /* ─── CONTACT ─── */
   .contact-section {
     background: var(--void);
@@ -730,6 +795,42 @@
   </div>
 </div>
 
+  <!-- MERCH -->
+<section id="merch">
+  <span class="section-label">Skope Store</span>
+  <h2 class="section-title">Wear the<br>signal</h2>
+  <div class="merch-grid">
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">TEE</span></div>
+      <div class="merch-info">
+        <div class="merch-name">LED Tee — Black / Green</div>
+        <div class="merch-price">8</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">CAP</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Skope 6-Panel Cap</div>
+        <div class="merch-price">4</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">HOOD</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Phosphor Hoodie</div>
+        <div class="merch-price">2</div>
+      </div>
+    </div>
+    <div class="merch-card">
+      <div class="merch-img"><div class="dot-grid-sm"></div><span class="merch-icon">PACK</span></div>
+      <div class="merch-info">
+        <div class="merch-name">Crew Sticker Pack</div>
+        <div class="merch-price">2</div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- CONTACT -->
 <div class="contact-section" id="contact">
   <span class="section-label">Get in touch</span>
