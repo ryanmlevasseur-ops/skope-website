@@ -711,6 +711,309 @@
   </div>
 </div>
 
+<!-- ============================================================
+     LATEST RELEASE SECTION
+
+     A good spot is right after the hero, before or in place of
+     the scrolling reel strip.
+
+     TO UPDATE FOR A NEW RELEASE (3 quick edits):
+     1. Video: replace wNsBiznHWYo (appears 3x) with the new
+        YouTube ID. e.g. youtube.com/watch?v=ABC123  ->  ABC123
+     2. Credit: update the artist + song in the caption line.
+     3. (optional) change the eyebrow / title text.
+
+     Poster auto-pulls from YouTube. If it shows black, change
+     maxresdefault -> hqdefault in the poster image URL.
+     ============================================================ -->
+
+<section class="reel-feature" id="reel">
+  <div class="reel-feature-inner">
+    <span class="reel-feature-eyebrow">Latest Release</span>
+    <h2 class="reel-feature-title">Fresh off <em>the edit.</em></h2>
+
+    <div class="reel-player" id="reelPlayer" data-video="wNsBiznHWYo" role="button" tabindex="0" aria-label="Play Emotionless by Dougie TV">
+      <div class="reel-player-frame">
+        <!-- poster: auto-pulled from YouTube. swap the URL for a custom one if you like -->
+        <img class="reel-poster" src="https://img.youtube.com/vi/wNsBiznHWYo/maxresdefault.jpg" alt="Emotionless by Dougie TV — directed by Skope" loading="lazy">
+        <div class="reel-scrim"></div>
+        <div class="reel-play">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <span class="reel-runtime">Watch — Emotionless</span>
+        <div class="reel-corner reel-corner-tl"></div>
+        <div class="reel-corner reel-corner-tr"></div>
+        <div class="reel-corner reel-corner-bl"></div>
+        <div class="reel-corner reel-corner-br"></div>
+      </div>
+    </div>
+
+    <p class="reel-feature-caption"><strong>Dougie TV</strong> — “Emotionless.” &nbsp;Directed, shot, and cut by Skope.</p>
+  </div>
+</section>
+
+<style>
+  .reel-feature {
+    padding: 140px 48px;
+    background: var(--void, #080a07);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* faint ambient glow, anchored low, very subtle */
+  .reel-feature::before {
+    content: '';
+    position: absolute;
+    width: 1000px; height: 600px;
+    background: radial-gradient(ellipse, rgba(57,255,20,0.05) 0%, transparent 70%);
+    bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+
+  .reel-feature-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .reel-feature-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--phosphor, #39ff14);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .reel-feature-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 6vw, 84px);
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+    color: var(--offwhite, #f0f0f0);
+    margin-bottom: 56px;
+  }
+
+  .reel-feature-title em {
+    font-style: normal;
+    color: var(--phosphor, #39ff14);
+    text-shadow: 0 0 30px rgba(57,255,20,0.4);
+  }
+
+  /* ─── PLAYER ─── */
+  .reel-player {
+    cursor: pointer;
+    position: relative;
+    outline: none;
+  }
+
+  .reel-player-frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #0a1006;
+    overflow: hidden;
+    border: 1px solid rgba(57,255,20,0.16);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .reel-player:hover .reel-player-frame,
+  .reel-player:focus-visible .reel-player-frame {
+    border-color: rgba(57,255,20,0.45);
+    box-shadow: 0 0 60px rgba(57,255,20,0.12), inset 0 0 80px rgba(0,0,0,0.4);
+  }
+
+  .reel-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.72;
+    transition: opacity 0.5s ease, transform 0.8s cubic-bezier(0.2,0.8,0.2,1);
+    transform: scale(1.02);
+  }
+
+  .reel-player:hover .reel-poster,
+  .reel-player:focus-visible .reel-poster {
+    opacity: 0.88;
+    transform: scale(1.06);
+  }
+
+  /* dark scrim so the play button + text always read */
+  .reel-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at center, transparent 0%, rgba(8,10,7,0.55) 100%),
+      linear-gradient(to top, rgba(8,10,7,0.6) 0%, transparent 40%);
+    transition: opacity 0.4s ease;
+  }
+
+  /* play button */
+  .reel-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    background: rgba(57,255,20,0.12);
+    border: 1.5px solid var(--phosphor, #39ff14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.35s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease;
+    box-shadow: 0 0 0 0 rgba(57,255,20,0.4);
+    animation: reelPulse 3s ease-in-out infinite;
+  }
+
+  .reel-play svg {
+    width: 34px; height: 34px;
+    color: var(--phosphor, #39ff14);
+    margin-left: 5px;
+    filter: drop-shadow(0 0 8px rgba(57,255,20,0.5));
+  }
+
+  .reel-player:hover .reel-play,
+  .reel-player:focus-visible .reel-play {
+    background: var(--phosphor, #39ff14);
+    transform: translate(-50%, -50%) scale(1.08);
+    animation: none;
+    box-shadow: 0 0 40px rgba(57,255,20,0.55);
+  }
+
+  .reel-player:hover .reel-play svg,
+  .reel-player:focus-visible .reel-play svg {
+    color: var(--void, #080a07);
+    filter: none;
+  }
+
+  @keyframes reelPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(57,255,20,0.35); }
+    50% { box-shadow: 0 0 0 16px rgba(57,255,20,0); }
+  }
+
+  /* "Watch the reel" label */
+  .reel-runtime {
+    position: absolute;
+    bottom: 28px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--offwhite, #f0f0f0);
+    opacity: 0.85;
+    transition: opacity 0.3s ease, letter-spacing 0.4s ease;
+  }
+
+  .reel-player:hover .reel-runtime {
+    opacity: 1;
+    letter-spacing: 0.32em;
+  }
+
+  /* cinematic corner brackets */
+  .reel-corner {
+    position: absolute;
+    width: 26px; height: 26px;
+    border-color: rgba(57,255,20,0.5);
+    border-style: solid;
+    border-width: 0;
+    transition: width 0.4s ease, height 0.4s ease, border-color 0.4s ease;
+    pointer-events: none;
+  }
+  .reel-corner-tl { top: 14px; left: 14px; border-top-width: 1.5px; border-left-width: 1.5px; }
+  .reel-corner-tr { top: 14px; right: 14px; border-top-width: 1.5px; border-right-width: 1.5px; }
+  .reel-corner-bl { bottom: 14px; left: 14px; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+  .reel-corner-br { bottom: 14px; right: 14px; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+  .reel-player:hover .reel-corner {
+    width: 36px; height: 36px;
+    border-color: var(--phosphor, #39ff14);
+  }
+
+  .reel-feature-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--muted, #5a5a5a);
+    margin-top: 36px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .reel-feature-caption strong {
+    color: var(--offwhite, #f0f0f0);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* once playing, the iframe fills the frame */
+  .reel-player.is-playing { cursor: default; }
+  .reel-player.is-playing .reel-poster,
+  .reel-player.is-playing .reel-scrim,
+  .reel-player.is-playing .reel-play,
+  .reel-player.is-playing .reel-runtime,
+  .reel-player.is-playing .reel-corner {
+    display: none;
+  }
+  .reel-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 720px) {
+    .reel-feature { padding: 90px 24px; }
+    .reel-feature-title { margin-bottom: 36px; }
+    .reel-play { width: 68px; height: 68px; }
+    .reel-play svg { width: 26px; height: 26px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reel-play { animation: none; }
+    .reel-poster { transition: none; }
+  }
+</style>
+
+<script>
+  (function () {
+    var player = document.getElementById('reelPlayer');
+    if (!player) return;
+
+    function launch() {
+      if (player.classList.contains('is-playing')) return;
+      var id = player.getAttribute('data-video');
+      if (!id || id === 'wNsBiznHWYo') return;
+
+      var iframe = document.createElement('iframe');
+      iframe.setAttribute('src',
+        'https://www.youtube.com/embed/' + id +
+        '?autoplay=1&rel=0&modestbranding=1&playsinline=1');
+      iframe.setAttribute('allow',
+        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('title', 'Skope demo reel');
+
+      player.querySelector('.reel-player-frame').appendChild(iframe);
+      player.classList.add('is-playing');
+    }
+
+    player.addEventListener('click', launch);
+    player.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); launch(); }
+    });
+  })();
+</script>
+
+  
 <!-- REEL STRIP -->
 <div class="reel-section" id="work">
   <div class="reel-track">
