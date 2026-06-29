@@ -991,7 +991,7 @@
     function launch() {
       if (player.classList.contains('is-playing')) return;
       var id = player.getAttribute('data-video');
-      if (!id || id === 'wNsBiznHWYo') return;
+      if (!id) return;
 
       var iframe = document.createElement('iframe');
       iframe.setAttribute('src',
