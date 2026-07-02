@@ -954,7 +954,8 @@
   }
 
   /* once playing, the iframe fills the frame */
-  .reel-player.is-playing { cursor: default; position: relative; z-index: 10000; }
+  .reel-player.is-playing { cursor: default; }
+  .reel-player.is-playing .reel-player-frame { position: relative; z-index: 10000; isolation: isolate; }
   .reel-player.is-playing .reel-poster,
   .reel-player.is-playing .reel-scrim,
   .reel-player.is-playing .reel-play,
